@@ -33,19 +33,26 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 // route pages
-$routes->get('/', 'Pages::index');
-$routes->get('/about', 'Pages::about');
-$routes->get('/contact', 'Pages::contact');
+$routes->get('/', 'Pages::index', ['filter' => 'auth']);
+$routes->get('/about', 'Pages::about', ['filter' => 'auth']);
+$routes->get('/contact', 'Pages::contact', ['filter' => 'auth']);
 
 // route komik
-$routes->get('/komik', 'Komik::index');
-$routes->get('/komik/create', 'Komik::create');
-$routes->get('/komik/edit/(:segment)', 'Komik::edit/$1');
-$routes->delete('/komik/(:num)', 'Komik::delete/$1');
-$routes->get('/komik/(:any)', 'Komik::detail/$1');
+$routes->get('/komik', 'Komik::index', ['filter' => 'auth']);
+$routes->get('/komik/create', 'Komik::create', ['filter' => 'auth']);
+$routes->get('/komik/edit/(:segment)', 'Komik::edit/$1', ['filter' => 'auth']);
+$routes->delete('/komik/(:num)', 'Komik::delete/$1', ['filter' => 'auth']);
+$routes->get('/komik/(:any)', 'Komik::detail/$1', ['filter' => 'auth']);
 
 // route orang
-$routes->get('/orang', 'Orang::index');
+$routes->get('/orang', 'Orang::index', ['filter' => 'auth']);
+
+// route login
+$routes->get('/login', 'Auth::login');
+$routes->get('/register', 'Auth::register');
+$routes->get('/logout', 'Auth::logout');
+$routes->post('/login', 'Auth::go');
+$routes->post('/register', 'Auth::save');
 
 /*
  * --------------------------------------------------------------------

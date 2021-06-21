@@ -4,7 +4,7 @@
 <div class="container">
     <h2 class="mt-5 mb-4">
         Daftar Komik
-        <a href="/komik/create" class="btn btn-light text-primary">Add Komik</a>
+        <a href="/komik/create" class="btn btn-light text-primary"><i class="fas fa-plus"></i></a>
     </h2>
     <!-- Flashdata -->
     <?php if (session()->getFlashdata('pesan')) : ?>
